@@ -12,6 +12,14 @@ window.$ = window.jQuery = require('jquery');
 
 const talkService = new TalkService()
 
-const tabSpeakers = talkService.findAllSpeakers()
+talkService.findAllObject('speakers').then(speakers => 
+    speakers.forEach(speaker => {
+        console.log(speaker.firstname + ' ' + speaker.lastname)
+    }
+))
 
-console.log(tabSpeakers)
+talkService.findAllObject('sessions').then(sessions => 
+    sessions.forEach(session => {
+        console.log(session.title)
+    }
+))
