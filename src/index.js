@@ -12,7 +12,7 @@ import SpeakerList from './speakers/list'
 import SpeakerDetail from './speakers/detail'
 import SessionList from './sessions/list'
 import SessionDetail from './sessions/detail'
-
+import Note from './sessions/note'
 import Accueil from './accueil/accueil'
 
 import Layout from './layout/index'
@@ -50,7 +50,7 @@ const speakersList = new SpeakerList(talkService)
 const speakerDetail = new SpeakerDetail(talkService)
 const sessionsList = new SessionList(talkService)
 const sessionDetail = new SessionDetail(talkService)
-
+const note = new Note(talkService)
 const accueil = new Accueil(talkService)
 
 var router = () => {
@@ -66,6 +66,8 @@ var router = () => {
         sessionDetail.render(id)
     }else if (location.hash == '#accueil') { 
         accueil.render();
+    }else if (location.hash == `#note-session-${id}`) { 
+        note.render(id);
     } else {
         console.log(location.hash)
     }

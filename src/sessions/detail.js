@@ -10,6 +10,10 @@ export default class SpeakerDetails{
         this.talkService.findObjectById('sessions', idSession)
             .then(session => {
                 $('h1#title').append(`${session.title}`)
+                $('#note').append(`  
+                <div class="row col-4 offset-4">
+                    <a class="btn btn-danger col-12" href="#note-session-${session.id}" role="button">  Mes Notes </a>
+                </div>`)
                 $('#desc').append(`${session.desc}`)
                 session.speakers.forEach(idSpeaker => {
                     this.talkService.findObjectById('speakers', idSpeaker).then(speaker => {
