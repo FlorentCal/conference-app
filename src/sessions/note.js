@@ -9,15 +9,15 @@ export default class noteSession{
         $('#main-view').html(note)
         this.talkService.findObjectById('sessions', idSession)
             .then(session => {
-                
+                $('#retour').html(`
+                <a class="navbar-brand" href="#session-detail-${idSession}">
+                    <img  height="30" src="/src/images/retour.png"
+                    alt="retour">
+                </a>`
+                )
                 $('h1#title').append(`${session.title}`)
                 $('#note').append(` <textarea name="textarea" id="noteArea" rows="10" cols="50" class="col-6 offset-4"></textarea>`)
                 $("#save").append(`<a id="enregistrerButton" class="btn btn-success col-2 offset-6" href="#session-detail-${session.id}">Enregistrer</a>`);
-              //  $('#retour').append(`<a id="enregistrerButton" class="btn btn-success col-2 offset-6" href="#session-detail-${session.id}">Enregistrer</a>`);
-             
-
-                
-
                 $('#noteArea').val(localStorage.getItem(`note-session-${idSession}`))
                 $("#enregistrerButton").attr('onclick',`localStorage['note-session-${idSession}'] = document.getElementById('noteArea').value;`)
 

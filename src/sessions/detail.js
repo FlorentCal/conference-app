@@ -17,7 +17,13 @@ export default class SpeakerDetails{
                 $('#desc').append(`${session.desc}`)
                 session.speakers.forEach(idSpeaker => {
                     this.talkService.findObjectById('speakers', idSpeaker).then(speaker => {
-                            $('#speakers').append(`
+                        $('#retour').html(`
+                        <a class="navbar-brand" href="#sessions-list">
+                            <img  height="30" src="/src/images/retour.png"
+                            alt="retour">
+                        </a>`
+                        )
+                        $('#speakers').append(`
                             <div class="bordered col-8 offset-2">
                                 <a class="col" href="#speaker-detail-${speaker.id}">
                                     <div class="row">
