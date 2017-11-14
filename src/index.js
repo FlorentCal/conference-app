@@ -5,6 +5,8 @@ import 'bootstrap';
 // Intégration de boostrap (partie CSS)
 import 'bootstrap/dist/css/bootstrap.css'
 
+import './css/theme.css'
+
 import TalkService from './common/talk.service'
 import SpeakerList from './speakers/list'
 import SpeakerDetail from './speakers/detail'
@@ -17,6 +19,7 @@ window.$ = window.jQuery = require('jquery');
 
 const talkService = new TalkService()
 
+/*
 talkService.findAllObject('speakers').then(speakers => 
     speakers.forEach(speaker => {
         console.log(speaker.firstname + ' ' + speaker.lastname)
@@ -36,22 +39,24 @@ talkService.findObjectById('speakers', 'afouques').then(speaker =>
 talkService.findObjectById('sessions', 's3').then(session => 
     console.log(session.id + ' : '+ session.title)
 ).catch(console.log('There was an error while loading the speaker with id s3'))
-
+*/
 let layout = new Layout();
 layout.render();
 
 const speakersList = new SpeakerList(talkService)
-const speakersDetail = new SpeakerDetail(talkService)
-
+const speakerDetail = new SpeakerDetail(talkService)
 const sessionsList = new SessionList(talkService)
 
 var router = () => {
-    if (location.has == '#speakers-list') {
-        layout.getList()
+    const id= location.hash.split("-")[2]
+    if (location.hash == '#speakers-list') {  
         speakersList.render()
-    } else if(location.has == '#speakers-detail'){
-        layout.getSpeakerDetail()
-        speakersDetail.render() 
+    } else if(location.hash == `#speaker-detail-${id}`){
+        speakerDetail.render(id) 
+    }else if (location.hash == '#sessions-list') { 
+        sessionsList.render();
+    }else {
+        console.log(location.hash)
     }
 }
     
