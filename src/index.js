@@ -17,6 +17,7 @@ window.$ = window.jQuery = require('jquery');
 
 const talkService = new TalkService()
 
+/*
 talkService.findAllObject('speakers').then(speakers => 
     speakers.forEach(speaker => {
         console.log(speaker.firstname + ' ' + speaker.lastname)
@@ -36,22 +37,22 @@ talkService.findObjectById('speakers', 'afouques').then(speaker =>
 talkService.findObjectById('sessions', 's3').then(session => 
     console.log(session.id + ' : '+ session.title)
 ).catch(console.log('There was an error while loading the speaker with id s3'))
-
+*/
 let layout = new Layout();
 layout.render();
 
 const speakersList = new SpeakerList(talkService)
-const speakersDetail = new SpeakerDetail(talkService)
-
+const speakerDetail = new SpeakerDetail(talkService)
 const sessionsList = new SessionList(talkService)
 
 var router = () => {
-    if (location.has == '#speaker-list') {
-        layout.getList()
-        speakerList.render()
-    } else if(location.has == '#speaker-detail'){
-        layout.getSpeakerDetail()
-        speaker-detail.render() 
+    const id= location.hash.split("-")[2]
+    if (location.hash == '#speakers-list') {  
+        speakersList.render()
+    } else if(location.hash == `#speaker-detail-${id}`){
+        speakerDetail.render(id) 
+    }else {
+        console.log(location.hash)
     }
 }
     
