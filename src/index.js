@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import TalkService from './common/talk.service'
 import SpeakerList from './speakers/list'
+import SpeakerDetail from './speakers/detail'
 import SessionList from './sessions/list'
 
 import Layout from './layout/index'
@@ -40,19 +41,17 @@ let layout = new Layout();
 layout.render();
 
 const speakersList = new SpeakerList(talkService)
+const speakersDetail = new SpeakerDetail(talkService)
 
 const sessionsList = new SessionList(talkService)
 
-let routerMap = new Map([
-    ['#speakers-list', speakersList],
-    ['#sessions-list', sessionsList]
-]) 
-
 var router = () => {
-    if (routerMap.has(location.hash)) {
-        routerMap.get(location.hash).render()
-    } else {
-    
+    if (location.has == '#speaker-list') {
+        layout.getList()
+        speakerList.render()
+    } else if(location.has == '#speaker-detail'){
+        layout.getSpeakerDetail()
+        speaker-detail.render() 
     }
 }
     
