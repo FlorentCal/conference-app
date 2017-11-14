@@ -1,7 +1,7 @@
 import template from './layout.html'
 
 
-class Toit {
+class Layout {
 
     render() {
         $('body').html(template)

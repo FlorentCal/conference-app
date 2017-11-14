@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import TalkService from './common/talk.service';
 
+import template from './layout.html'
+
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
 
@@ -23,3 +25,10 @@ talkService.findAllObject('sessions').then(sessions =>
         console.log(session.title)
     }
 ))
+
+class Layout {
+    
+        render() {
+            $('body').html(template)
+        }
+    }
