@@ -6,8 +6,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css'
 
 import TalkService from './common/talk.service';
-
-import template from './layout.html'
+import SpeakerList from './speakers/list/index'
 
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
@@ -18,17 +17,22 @@ talkService.findAllObject('speakers').then(speakers =>
     speakers.forEach(speaker => {
         console.log(speaker.firstname + ' ' + speaker.lastname)
     }
-))
+)).catch(console.log('There was an error while loading speakers'))
 
 talkService.findAllObject('sessions').then(sessions => 
     sessions.forEach(session => {
         console.log(session.title)
     }
-))
+)).catch(console.log('There was an error while loading sessions'))
 
-class Layout {
-    
-        render() {
-            $('body').html(template)
-        }
-    }
+talkService.findObjectById('speakers', 'afouques').then(speaker => 
+    console.log(speaker.id + ' : ' + speaker.firstname + ' ' + speaker.lastname)
+).catch(console.log('There was an error while loading the speaker with id afouques'))
+
+talkService.findObjectById('sessions', 's3').then(session => 
+    console.log(session.id + ' : '+ session.title)
+).catch(console.log('There was an error while loading the speaker with id s3'))
+
+const speakerList = new SpeakerList()
+speakerList.render()
+
