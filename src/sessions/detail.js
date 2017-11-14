@@ -5,23 +5,27 @@ export default class SpeakerDetails{
         this.talkService = talkService
     }
 
-    render(idSpeaker){
+    render(idSession){
         $('#main-view').html(detail)
         this.talkService.findObjectById('sessions', idSession)
             .then(session => {
-                $('h1#title').append(`${sessions.title}`)
+                $('h1#title').append(`${session.title}`)
                 $('#desc').append(`${session.desc}`)
                 session.speakers.forEach(idSpeaker => {
-                    this.talkService.findSpeakerById(idSpeaker).then(speaker => {
+                    this.talkService.findObjectById('speakers', idSpeaker).then(speaker => {
                             $('#speakers').append(`
-                            <div class='row speakers'>
-                                <div>
-                                    <img class='img-fluid' src='/src/images/${speaker.image}'/>
-                                </div>
-                                <div>
-                                    <a href='#speaker-detail-${speaker.id}'>${speaker.lastname} ${speaker.firstname}</a>
-                                </div>
-                            </div>`);
+                            <div class="bordered col-7">
+                                <a class="col" href="#speaker-detail-${speaker.id}">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img class="round col" src="/src/images/${speaker.image}"/>
+                                        </div>
+                                        <div class="col-9">
+                                            <h2 class="big-font">${speaker.lastname} ${speaker.firstname}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            <div>`)
                     })
                 })
             }).catch(exception => $('h1#title').append('Error while loading session : ' + exception))

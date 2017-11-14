@@ -9,3 +9,13 @@ div {
 h1{
     text-align:center;
 }
+
+.big-font{
+    font-size: 2em;
+    margin-top:7%;
+}
+
+.bordered{
+    border: 2px solid black;
+    border-radius: 50px;
+}

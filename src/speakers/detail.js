@@ -14,7 +14,7 @@ export default class SpeakerDetails{
                 speaker.socials.forEach((social) => {
                     $('#speaker-socials').append(`<a class="list-group-item col-4 offset-4" href='${social.link}'>${social.class}</a>`)
                 })
-                $('#presentation').append(`<p>${speaker.about}</p>`)
+                $('#presentation').append(`<p class="text-justify">${speaker.about}</p>`)
             }).catch(exception => $('h1#title').append('Error while loading speaker : ' + exception))
     }
 }
