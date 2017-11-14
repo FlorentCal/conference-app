@@ -5,8 +5,10 @@ import 'bootstrap';
 // Intégration de boostrap (partie CSS)
 import 'bootstrap/dist/css/bootstrap.css'
 
-import TalkService from './common/talk.service';
+import TalkService from './common/talk.service'
 import SpeakerList from './speakers/list/index'
+
+import Layout from './layout/index'
 
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
@@ -33,6 +35,10 @@ talkService.findObjectById('sessions', 's3').then(session =>
     console.log(session.id + ' : '+ session.title)
 ).catch(console.log('There was an error while loading the speaker with id s3'))
 
+let layout = new Layout();
+layout.render();
+
 const speakerList = new SpeakerList()
 speakerList.render()
+
 

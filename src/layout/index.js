@@ -1,7 +1,6 @@
 import template from './layout.html'
 
-class Layout {
-
+export default  class Layout {
     render() {
         $('body').html(template)
     }
