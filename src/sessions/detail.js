@@ -14,7 +14,7 @@ export default class SpeakerDetails{
                 session.speakers.forEach(idSpeaker => {
                     this.talkService.findObjectById('speakers', idSpeaker).then(speaker => {
                             $('#speakers').append(`
-                            <div class="bordered col-7">
+                            <div class="bordered col-8 offset-2">
                                 <a class="col" href="#speaker-detail-${speaker.id}">
                                     <div class="row">
                                         <div class="col-3">
