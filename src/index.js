@@ -12,6 +12,8 @@ import SpeakerList from './speakers/list'
 import SpeakerDetail from './speakers/detail'
 import SessionList from './sessions/list'
 
+import Accueil from './accueil/accueil'
+
 import Layout from './layout/index'
 
 // intégration JQuery
@@ -47,6 +49,8 @@ const speakersList = new SpeakerList(talkService)
 const speakerDetail = new SpeakerDetail(talkService)
 const sessionsList = new SessionList(talkService)
 
+const accueil = new Accueil(talkService)
+
 var router = () => {
     const id= location.hash.split("-")[2]
     if (location.hash == '#speakers-list') {  
@@ -55,7 +59,9 @@ var router = () => {
         speakerDetail.render(id) 
     }else if (location.hash == '#sessions-list') { 
         sessionsList.render();
-    }else {
+    }else if (location.hash == '#accueil') { 
+        accueil.render();
+    } else {
         console.log(location.hash)
     }
 }
