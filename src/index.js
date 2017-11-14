@@ -5,6 +5,8 @@ import 'bootstrap';
 // Intégration de boostrap (partie CSS)
 import 'bootstrap/dist/css/bootstrap.css'
 
+import './css/theme.css'
+
 import TalkService from './common/talk.service'
 import SpeakerList from './speakers/list'
 import SpeakerDetail from './speakers/detail'
