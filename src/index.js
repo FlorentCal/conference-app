@@ -46,12 +46,12 @@ const speakersDetail = new SpeakerDetail(talkService)
 const sessionsList = new SessionList(talkService)
 
 var router = () => {
-    if (location.has == '#speaker-list') {
+    if (location.has == '#speakers-list') {
         layout.getList()
-        speakerList.render()
-    } else if(location.has == '#speaker-detail'){
+        speakersList.render()
+    } else if(location.has == '#speakers-detail'){
         layout.getSpeakerDetail()
-        speaker-detail.render() 
+        speakersDetail.render() 
     }
 }
     
