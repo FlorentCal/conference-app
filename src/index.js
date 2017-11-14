@@ -6,8 +6,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css'
 
 import TalkService from './common/talk.service'
-import SpeakerList from './speakers/list/index'
-import SessionList from './sessions/list/index'
+import SpeakerList from './speakers/list'
+import SessionList from './sessions/list'
 
 import Layout from './layout/index'
 
@@ -59,8 +59,8 @@ var router = () => {
 window.addEventListener('load', () => {
 
     window.onhashchange = () => {
-        router();
-    };
+        router()
+    }
     
-    router();
-});
+    router()
+})
