@@ -39,16 +39,14 @@ talkService.findObjectById('sessions', 's3').then(session =>
 let layout = new Layout();
 layout.render();
 
-const speakerList = new SpeakerList(talkService)
+const speakersList = new SpeakerList(talkService)
 
-const sessionList = new SessionList(talkService)
+const sessionsList = new SessionList(talkService)
 
 let routerMap = new Map([
-    ['#speaker-list', speakerList],
-    ['#session-list', sessionList]
+    ['#speakers-list', speakersList],
+    ['#sessions-list', sessionsList]
 ]) 
-
-
 
 var router = () => {
     if (routerMap.has(location.hash)) {

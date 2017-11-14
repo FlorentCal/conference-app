@@ -9,7 +9,7 @@ export default class SessionList{
             sessions.forEach(session => {
                 view  += session.title
             })
-            $('#session-list').html(view)
+            $('#main-view').html(view)
         })
     }
 }
