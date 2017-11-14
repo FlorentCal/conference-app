@@ -1,4 +1,3 @@
-
 // Intégration de bootstrap (partie JS)
 import 'bootstrap';
 
@@ -50,25 +49,19 @@ const speakersList = new SpeakerList(talkService)
 const speakerDetail = new SpeakerDetail(talkService)
 const sessionsList = new SessionList(talkService)
 const sessionDetail = new SessionDetail(talkService)
+const accueilConference = new Accueil(talkService)
 
-const accueil = new Accueil(talkService)
+let routerMap = new Map([
+    ['#accueil-conference', accueilConference],
+    ['#speakers-list', speakersList],
+    ['#speaker-detail', speakerDetail],
+    ['#sessions-list', sessionsList],
+    ['#session-detail', sessionDetail]
+])
 
 var router = () => {
-    const id= location.hash.split("-")[2]
-    if (location.hash == '#speakers-list') {  
-        speakersList.render()
-    } else if(location.hash == `#speaker-detail-${id}`){
-        speakerDetail.render(id) 
-    } else if (location.hash == '#sessions-list') { 
-        sessionsList.render()
-    }
-    else if (location.hash == `#session-detail-${id}`) { 
-        sessionDetail.render(id)
-    }else if (location.hash == '#accueil') { 
-        accueil.render();
-    } else {
-        console.log(location.hash)
-    }
+    let route = location.hash.split('-')
+    routerMap.get(route[0]+'-'+route[1]).render(route[2])
 }
     
 window.addEventListener('load', () => {
