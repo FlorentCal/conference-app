@@ -41,4 +41,24 @@ layout.render();
 const speakerList = new SpeakerList()
 speakerList.render()
 
+let routerMap = new Map([
+    ['#speaker-list', speakerList],
+    ['#session-list', sessionList]
+]) 
 
+var router = () => {
+    if (routerMap.has(location.hash)) {
+        routerMap.get(location.hash).render()
+    } else {
+    
+    }
+}
+    
+window.addEventListener('load', () => {
+
+    window.onhashchange = () => {
+        router();
+    };
+    
+    router();
+});
