@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import TalkService from './common/talk.service'
 import SpeakerList from './speakers/list/index'
+import SessionList from './sessions/list/index'
 
 import Layout from './layout/index'
 
@@ -38,13 +39,16 @@ talkService.findObjectById('sessions', 's3').then(session =>
 let layout = new Layout();
 layout.render();
 
-const speakerList = new SpeakerList()
-speakerList.render()
+const speakerList = new SpeakerList(talkService)
+
+const sessionList = new SessionList(talkService)
 
 let routerMap = new Map([
     ['#speaker-list', speakerList],
     ['#session-list', sessionList]
 ]) 
+
+
 
 var router = () => {
     if (routerMap.has(location.hash)) {
